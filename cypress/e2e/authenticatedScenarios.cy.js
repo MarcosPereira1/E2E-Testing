@@ -8,20 +8,19 @@ describe('Scenarios where authentication is a pre-requirement', () => {
 
   it('CRUDs a note', () => {
     const faker = require('faker')
-    const seconds = 10000
     const noteDescription = faker.lorem.words(4)
 
     cy.createNote(noteDescription)
-    cy.wait('@getNotes', {timeout: seconds})
+    cy.wait('@getNotes', {timeout: 10000})
 
     const updatedNoteDescription = faker.lorem.words(4)
     const attachFile = true
 
     cy.editNote(noteDescription, updatedNoteDescription, attachFile)
-    cy.wait('@getNotes', {timeout: seconds})
+    cy.wait('@getNotes', {timeout: 10000})
 
     cy.deleteNote(updatedNoteDescription)
-    cy.wait('@getNotes', {timeout: seconds})
+    cy.wait('@getNotes', {timeout: 10000})
   })
 
   it('successfully submits the form', () => {
@@ -29,13 +28,13 @@ describe('Scenarios where authentication is a pre-requirement', () => {
 
     cy.fillSettingsFormAndSubmit()
 
-    cy.wait('@getNotes', {timeout: seconds})
+    cy.wait('@getNotes', {timeout: 10000})
     cy.wait('@paymentRequest').then(response => {
       expect(response.state).to.equal('Complete')
     })
   })
 
-  it.only('logs out', () => {
+  it('logs out', () => {
     cy.visit('/')
     cy.wait('@getNotes')
 
