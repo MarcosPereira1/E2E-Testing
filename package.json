@@ -17,6 +17,7 @@
   "devDependencies": {
     "cypress": "^12.5.1",
     "cypress-file-upload": "^5.0.8",
+    "cypress-grep": "^2.5.3",
     "cypress-iframe": "^1.0.1",
     "cypress-mailosaur": "^2.3.3",
     "eslint": "^7.32.0",
